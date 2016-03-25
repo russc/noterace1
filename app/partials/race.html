@@ -1,0 +1,24 @@
+<form name="myRace" novalidate>
+    <input required placeholder="Give your race a name..." ng-hide="raceStart" ng-model="raceName">
+    <button type="submit" ng-click="startNewRace()" ng-hide="raceStart">Start</button>
+</form>
+<h2>abc...</h2>
+<div id="notation"></div>
+<div id="raceResults" ng-show="raceStart">
+    <h1>Race: {{raceName}}</h1>
+<!--     <button ng-click="resetScore()">
+        Reset Score
+    </button> -->
+    <div class="row" ng-repeat="val in raceResults">
+        <div class="col-md-2">
+            <strong>{{val.name}}</strong>
+        </div>
+        <div class="col-md-10 score">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{val.score}}" aria-valuemin="0" aria-valuemax="100" style="width: {{val.score}}%">
+                {{val.score}}
+            </div>
+        </div>
+
+
+    </div>
+</div>

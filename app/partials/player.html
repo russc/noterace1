@@ -1,0 +1,104 @@
+<!-- <button ng-click="joinedRace = true" ng-hide="joinedRace">Register</button> -->
+<!--     <button ng-cloak ng-show="createMode" ng-click="createAccount(email, pass, confirm)">Create Account</button> -->
+<!--     <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button> -->
+
+<form name="raceForm" novalidate>
+    <input required placeholder="Race code..." type="text" ng-model="raceCode" ng-hide="joinedRace">
+    <input required placeholder="First Name..." type="text" ng-model="firstName" ng-hide="joinedRace">
+    <input required placeholder="Last Name..." type="text" ng-model="lastName" ng-hide="joinedRace">
+    <button ng-click="joinRace()" ng-hide="joinedRace">Join</button>
+</form>
+<div ng-show="joinedRace">
+    <h1>Race:  {{raceCode}}</h1>
+    <h3>Player: {{fullName}}</h3>
+
+    <!--     <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{playerScore}}" aria-valuemin="0" aria-valuemax="100" style="width: {{playerScore}}%">
+            <span>{{playerScore}}</span>
+        </div>
+    </div> -->
+    <div class="row" ng-repeat="val in raceResults | filter:val.name = fullName">
+        <div class="col-md-2">
+            <strong>{{val.name}}</strong>
+        </div>
+        <div class="col-md-10 score">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{val.score}}" aria-valuemin="0" aria-valuemax="100" style="width: {{val.score}}%">
+                {{val.score}}
+            </div>
+        </div>
+
+
+    </div>
+    <div id="question" >
+        <div class="left">
+            <img src="images/{{currentImage+'.png'}}" alt="notes">
+        </div>
+        <div class="left response">
+            <h1>{{response}}</h1> 
+        </div>
+
+    </div>
+
+
+    <div id="controls">
+        <!--         <button ng-click="randomize()">
+            Reset
+        </button> -->
+
+        <div class="btn-group">
+
+            <button ng-click="answer('a-flat')" type="button" class="btn btn-primary">Ab</button>
+            <button ng-click="answer('a-natural')" type="button" class="btn btn-default">A</button>
+            <button ng-click="answer('a-sharp')" type="button" class="btn btn-danger">A#</button>
+
+        </div>
+        <div class="btn-group">
+
+            <button ng-click="answer('b-flat')" type="button" class="btn btn-primary">Bb</button>
+            <button ng-click="answer('b-natural')" type="button" class="btn btn-default">B</button>
+            <button ng-click="answer('b-sharp')" type="button" class="btn btn-danger">B#</button>
+
+        </div>
+        <div class="btn-group">
+            <button ng-click="answer('c-flat')" type="button" class="btn btn-primary">Cb</button>
+            <button ng-click="answer('c-natural')" type="button" class="btn btn-default">C</button>
+            <button ng-click="answer('c-sharp')" type="button" class="btn btn-danger">C#</button>
+
+
+        </div>
+        <div class="btn-group">
+            <button ng-click="answer('d-flat')" type="button" class="btn btn-primary">Db</button>
+            <button ng-click="answer('d-natural')" type="button" class="btn btn-default">D</button>
+            <button ng-click="answer('d-sharp')" type="button" class="btn btn-danger">D#</button>
+
+
+        </div>
+        <div class="btn-group">
+
+            <button ng-click="answer('e-flat')" type="button" class="btn btn-primary">Eb</button>
+            <button ng-click="answer('e-natural')" type="button" class="btn btn-default">E</button>
+            <button ng-click="answer('e-sharp')" type="button" class="btn btn-danger">E#</button>
+
+        </div>
+        <div class="btn-group">
+            <button ng-click="answer('f-flat')" type="button" class="btn btn-primary">Fb</button>
+            <button ng-click="answer('f-natural')" type="button" class="btn btn-default">F</button>
+            <button ng-click="answer('f-sharp')" type="button" class="btn btn-danger">F#</button>
+
+        </div>
+        <div class="btn-group">
+
+            <button ng-click="answer('g-flat')" type="button" class="btn btn-primary">Gb</button>
+            <button ng-click="answer('g-natural')" type="button" class="btn btn-default">G</button>
+            <button ng-click="answer('g-sharp')" type="button" class="btn btn-danger">G#</button>
+
+        </div>
+
+
+    </div>
+</div>
+
+<!-- <ul id="messages" ng-show="messages.length">
+    <li ng-repeat="message in messages | reverse">{{message.text}}</li>
+</ul>
+ -->
